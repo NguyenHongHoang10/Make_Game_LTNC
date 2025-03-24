@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1742805718 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<iostream>
+	<ctime>
+	"Constants.h"
+	"Utils.h"
+
+1742805785 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\constants.h
+	<string>
+
+1742805958 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\utils.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_mixer.h>
+	<SDL_ttf.h>
+	<iostream>
+	<string>
+
+1742806051 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\utils.cpp
+	"Utils.h"
+

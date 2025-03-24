@@ -1,5 +1,7 @@
 #include "Utils.h"
 
+using namespace std;
+
 void logError(ostream& os, const string& msg)
 {
     os << msg << "Error: " << SDL_GetError() << endl;
@@ -19,7 +21,7 @@ int initSDL()
     }
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
     {
-        logError(cout, "Mix_OpenAudio")'
+        logError(cout, "Mix_OpenAudio");
         SDL_Quit();
         return 1;
     }
@@ -31,9 +33,9 @@ int initSDL()
     return 0;
 }
 
-SDL_Texture* loadTexture(string& path, SDL_Renderer* renderer)
+SDL_Texture* loadTexture(const string& path, SDL_Renderer* renderer)
 {
-    SDL_Texture* texture = IMG_LoadTexture(renderer, path.cstr());
+    SDL_Texture* texture = IMG_LoadTexture(renderer, path.c_str());
     if(!texture)
     {
         logError(cout, "Load " + path);

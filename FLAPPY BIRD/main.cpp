@@ -6,9 +6,11 @@
 #include <ctime>
 #include "Constants.h"
 #include "Utils.h"
-#include "ResourceManager.h"
-#include "GameManager.h"
+//#include "ResourceManager.h"
+//#include "GameManager.h"
 
+
+using namespace std;
 int main(int argc, char* args[])
 {
     srand(time(NULL));
