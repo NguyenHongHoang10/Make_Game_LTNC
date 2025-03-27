@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1743040840 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\main.cpp
+1743080933 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -11,10 +11,10 @@
 	"ResourceManager.h"
 	"GameManager.h"
 
-1743043059 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\constants.h
+1743080939 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\constants.h
 	<string>
 
-1742805958 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\utils.h
+1743044605 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\utils.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -22,20 +22,20 @@
 	<iostream>
 	<string>
 
-1742806051 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\utils.cpp
+1743044465 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\utils.cpp
 	"Utils.h"
 
-1743037936 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\bird.cpp
+1743079696 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\bird.cpp
 	"Bird.h"
 	"Constants.h"
 	"Utils.h"
 	"ResourceManager.h"
 
-1743037883 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\bird.h
+1743079652 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\bird.h
 	<SDL.h>
 	<SDL_mixer.h>
 
-1743037261 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\resourcemanager.h
+1743079110 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\resourcemanager.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -43,18 +43,18 @@
 	<string>
 	<map>
 
-1743040830 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\resourcemanager.cpp
+1743079044 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\resourcemanager.cpp
 	"ResourceManager.h"
 	"Utils.h"
 
-1743042790 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\gamemanager.cpp
+1743080199 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\gamemanager.cpp
 	"GameManager.h"
 	"Constants.h"
 	"Utils.h"
 	"ResourceManager.h"
 	<cmath>
 
-1743043059 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\gamemanager.h
+1743079921 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\gamemanager.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -65,7 +65,7 @@
 	"Pipe.h"
 	"GameState.h"
 
-1743043059 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\pipe.h
+1743079772 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\pipe.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -73,9 +73,9 @@
 	"Constants.h"
 	"Utils.h"
 
-1743037871 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\gamestate.h
+1743079619 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\gamestate.h
 
-1743043059 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\pipe.cpp
+1743079872 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\pipe.cpp
 	"Pipe.h"
 	"Constants.h"
 	"Utils.h"

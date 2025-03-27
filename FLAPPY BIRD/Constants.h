@@ -23,7 +23,7 @@ const int MAX_GAP_CENTER = 350;
 const int GROUND_HEIGHT = 100;
 
 /// Thông số hiển thị điểm số
-const string FONT_PATH = "font.ttf";
+const string FONT_PATH = "Assets/font.ttf";
 const int FONT_SIZE = 24;
 const int SCORE_POS_X = 10;
 const int SCORE_POS_Y = 10;

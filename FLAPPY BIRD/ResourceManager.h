@@ -7,24 +7,24 @@
 #include <SDL_ttf.h>
 #include <string>
 #include <map>
-
+using namespace std;
 class ResourceManager {
 public:
     static ResourceManager& getInstance();
-    void loadTextureResource(const std::string& name, const std::string& path, SDL_Renderer* renderer);
-    SDL_Texture* getTexture(const std::string& name);
-    void loadSound(const std::string& name, const std::string& path);
-    Mix_Chunk* getSound(const std::string& name);
-    void loadFont(const std::string& name, const std::string& path, int size);
-    TTF_Font* getFont(const std::string& name);
+    void loadTextureResource(const string& name, const string& path, SDL_Renderer* renderer);
+    SDL_Texture* getTexture(const string& name);
+    void loadSound(const string& name, const string& path);
+    Mix_Chunk* getSound(const string& name);
+    void loadFont(const string& name, const string& path, int size);
+    TTF_Font* getFont(const string& name);
     void cleanup();
 
 private:
     ResourceManager() {}
     ~ResourceManager();
-    std::map<std::string, SDL_Texture*> textures;
-    std::map<std::string, Mix_Chunk*> sounds;
-    std::map<std::string, TTF_Font*> fonts;
+    map<string, SDL_Texture*> textures;
+    map<string, Mix_Chunk*> sounds;
+    map<string, TTF_Font*> fonts;
 };
 
 #endif
