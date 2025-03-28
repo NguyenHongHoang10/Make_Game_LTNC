@@ -25,7 +25,7 @@
 1743044465 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\utils.cpp
 	"Utils.h"
 
-1743079696 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\bird.cpp
+1743081403 source:d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\bird.cpp
 	"Bird.h"
 	"Constants.h"
 	"Utils.h"
@@ -54,7 +54,7 @@
 	"ResourceManager.h"
 	<cmath>
 
-1743079921 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\gamemanager.h
+1743174172 d:\001_study\dev game\001_official\make_game_ltnc\flappy bird\gamemanager.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
