@@ -52,6 +52,8 @@
 		<Unit filename="Bird.cpp" />
 		<Unit filename="Bird.h" />
 		<Unit filename="Constants.h" />
+		<Unit filename="GameManager.cpp" />
+		<Unit filename="GameManager.h" />
 		<Unit filename="GameState.h" />
 		<Unit filename="Pipe.cpp" />
 		<Unit filename="Pipe.h" />

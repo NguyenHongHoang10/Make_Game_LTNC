@@ -41,6 +41,7 @@ GameManager::~GameManager() {
     for (auto& pipe : pipes) delete pipe;
     SDL_DestroyTexture(scoreTexture);
     SDL_DestroyTexture(highScoreTexture);
+    // Không cần destroy các tài nguyên khác vì ResourceManager quản lý
 }
 
 void GameManager::updateScoreTexture() {
