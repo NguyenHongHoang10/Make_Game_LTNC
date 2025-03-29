@@ -25,7 +25,7 @@ private:
 public:
     Pipe(SDL_Renderer* renderer, int startX);
     ~Pipe();
-    void update();
+    void update(float speed);
     void render(int shakeOffsetX, int shakeOffsetY);
     void reset(int startX);
     SDL_Rect getTopRect(int shakeOffsetX, int shakeOffsetY);

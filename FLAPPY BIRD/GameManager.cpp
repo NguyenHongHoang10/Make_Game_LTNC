@@ -6,8 +6,9 @@
 
 using namespace std;
 
-GameManager::GameManager(SDL_Renderer* renderer) : renderer(renderer), score(0), gameOver(false),
-state(MENU), menuTimer(0), groundX(0), shakeTimer(0), shakeOffsetX(0), shakeOffsetY(0) {
+GameManager::GameManager(SDL_Renderer* renderer) : renderer(renderer), score(0),
+    gameOver(false), state(MENU), menuTimer(0), groundX(0),
+        shakeTimer(0), shakeOffsetX(0), shakeOffsetY(0),scrollSpeed(INITIAL_SPEED) {
     bird = new Bird(renderer);
     for (int i = 0; i < 100; ++i) {
         pipes.push_back(new Pipe(renderer, SCREEN_WIDTH + i * PIPE_SPACING));
@@ -118,6 +119,7 @@ void GameManager::run(bool& restart) {
                 Mix_PlayChannel(-1, hitSound, 0);
                 Mix_PlayChannel(-1, dieSound, 0);
                 cout << "Game Over! SCORE: " << score << endl;
+                scrollSpeed = INITIAL_SPEED;
                 shakeTimer = 10;
                 updateScoreTexture();
                 if (score > highScore) {
@@ -150,11 +152,25 @@ void GameManager::handleEvents(SDL_Event& e) {
         } else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE) {
             startGame();
         }
-    } else if (state == PLAYING) {
+    }
+    else if (state == PLAYING) {
         if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE) {
             bird->flap();
         }
-    } else if (state == GAME_OVER) {
+        else if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_p)
+        {
+            state = PAUSE;
+        }
+    }
+    else if(state == PAUSE)
+    {
+        if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_p)
+        {
+            state = PLAYING;
+        }
+
+    }
+    else if (state == GAME_OVER) {
         if (e.type == SDL_MOUSEBUTTONDOWN) {
             int mx, my;
             SDL_GetMouseState(&mx, &my);
@@ -183,11 +199,15 @@ void GameManager::update() {
             }
         }
         for (auto& pipe : pipes) {
-            pipe->update();
+            pipe->update(scrollSpeed);
             if (pipe->getTopRect(0, 0).x + PIPE_WIDTH < bird->getRect().x && !pipe->hasPassed()) {
                 pipe->markPassed();
                 score++;
                 cout << "Diem: " << score << endl;
+                if (score % Kpipe == 0) {
+                    scrollSpeed += INCREASE;
+                    cout << "Scroll speed increased to: " << scrollSpeed << endl;
+                }
                 updateScoreTexture();
             }
             if (pipe->getTopRect(0, 0).x + PIPE_WIDTH < 0) {
@@ -196,7 +216,7 @@ void GameManager::update() {
                 maxPipeX = pipe->getTopRect(0, 0).x;
             }
         }
-        groundX -= SCROLL_SPEED;
+        groundX -= scrollSpeed;
         if (groundX < -SCREEN_WIDTH) groundX += SCREEN_WIDTH;
     }
 
@@ -224,12 +244,23 @@ void GameManager::render() {
     if (state == MENU) {
         SDL_Rect buttonRect = {SCREEN_WIDTH / 2 - 50 + shakeOffsetX, SCREEN_HEIGHT / 2 + 50 + shakeOffsetY, 100, 100};
         SDL_RenderCopy(renderer, startButton, NULL, &buttonRect);
-    } else if (state == GAME_OVER) {
+    }
+    else if (state == GAME_OVER) {
         SDL_Rect gameOverRect = {SCREEN_WIDTH / 2 - 150 + shakeOffsetX, SCREEN_HEIGHT / 2 - 150 + shakeOffsetY, 300, 100};
         SDL_Rect restartRect = {SCREEN_WIDTH / 2 - 50 + shakeOffsetX, SCREEN_HEIGHT / 2 + 50 + shakeOffsetY, 100, 100};
         SDL_RenderCopy(renderer, gameOverTexture, NULL, &gameOverRect);
         SDL_RenderCopy(renderer, restartButton, NULL, &restartRect);
     }
+    else if (state == PAUSE) {
+    SDL_Color white = {255, 215, 0, 255};
+    SDL_Surface* surface = TTF_RenderText_Solid(font, "Paused", white);
+    SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Rect pauseRect = {SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 - 25, 100, 50};
+    SDL_RenderCopy(renderer, tempTexture, NULL, &pauseRect);
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(tempTexture);
+    }
+
 
     if (highScoreTexture && state == MENU) {
         int w, h;

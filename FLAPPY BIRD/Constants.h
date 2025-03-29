@@ -10,7 +10,6 @@ const int SCREEN_WIDTH = 400;
 const int SCREEN_HEIGHT = 600;
 const int BIRD_WIDTH = 64;
 const int BIRD_HEIGHT = 64;
-const int SCROLL_SPEED = 2;
 const int PIPE_WIDTH = 52;
 const int PIPE_SPACING = 250;
 const int GAP_MIN = 135;
@@ -21,6 +20,10 @@ const double FLAP_FORCE = -7.0f;
 const int MIN_GAP_CENTER = 120;
 const int MAX_GAP_CENTER = 350;
 const int GROUND_HEIGHT = 100;
+
+const float INITIAL_SPEED = 2;
+const int Kpipe = 1;
+const float INCREASE = 0.5;
 
 /// Thông số hiển thị điểm số
 const string FONT_PATH = "Assets/font.ttf";

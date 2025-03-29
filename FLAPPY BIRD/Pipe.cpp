@@ -27,11 +27,10 @@ Pipe::Pipe(SDL_Renderer* renderer, int startX) : renderer(renderer), x(startX), 
 }
 
 Pipe::~Pipe() {
-    // Không cần destroy texture hay sound vì ResourceManager quản lý
 }
 
-void Pipe::update() {
-    x -= SCROLL_SPEED;
+void Pipe::update(float speed) {
+    x -= static_cast<int>(speed)    ;
 }
 
 void Pipe::render(int shakeOffsetX, int shakeOffsetY) {

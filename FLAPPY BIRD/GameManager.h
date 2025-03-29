@@ -37,6 +37,8 @@ private:
     int shakeTimer;
     int shakeOffsetX;
     int shakeOffsetY;
+    float scrollSpeed;
+
 
     void handleEvents(SDL_Event& e);
     void update();

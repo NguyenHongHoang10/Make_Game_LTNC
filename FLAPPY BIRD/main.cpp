@@ -44,6 +44,7 @@ int main(int argc, char* args[])
     resourceManager.loadTextureResource("pipe_end", "Assets/pipe_end.png", renderer);
     resourceManager.loadTextureResource("pipe_body", "Assets/pipe_body.png", renderer);
     resourceManager.loadTextureResource("start_button", "Assets/start_button.png", renderer);
+
     resourceManager.loadTextureResource("game_over", "Assets/game_over.png", renderer);
     resourceManager.loadTextureResource("restart_button", "Assets/restart_button.png", renderer);
     resourceManager.loadSound("flap", "Assets/flap_sound.mp3");
