@@ -18,7 +18,8 @@ public:
     ~Bird();
     void flap();
     void update();
-    void render();
+    //void render();
+    void render(int shakeOffsetX, int shakeOffsetY);
     SDL_Rect getRect();
     void setPosition(int newX, int newY);
 };

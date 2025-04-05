@@ -10,7 +10,7 @@ GameManager::GameManager(SDL_Renderer* renderer) : renderer(renderer), score(0),
     gameOver(false), state(MENU), menuTimer(0), groundX(0),
         shakeTimer(0), shakeOffsetX(0), shakeOffsetY(0),scrollSpeed(INITIAL_SPEED) {
     bird = new Bird(renderer);
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < 2; ++i) {
         pipes.push_back(new Pipe(renderer, SCREEN_WIDTH + i * PIPE_SPACING));
     }
     background = ResourceManager::getInstance().getTexture("background");
@@ -112,7 +112,9 @@ void GameManager::run(bool& restart) {
         }
 
         if (state != GAME_OVER) {
+
             update();
+
             if (state == PLAYING && checkCollision()) {
                 gameOver = true;
                 state = GAME_OVER;
@@ -120,7 +122,6 @@ void GameManager::run(bool& restart) {
                 Mix_PlayChannel(-1, dieSound, 0);
                 cout << "Game Over! SCORE: " << score << endl;
                 scrollSpeed = INITIAL_SPEED;
-                shakeTimer = 10;
                 updateScoreTexture();
                 if (score > highScore) {
                     highScore = score;
@@ -131,6 +132,13 @@ void GameManager::run(bool& restart) {
                         outFile.close();
                     }
                 }
+                shakeTimer = 30;
+                for(int i=1;i<=shakeTimer;i++)
+                {
+                    update();
+                    render();
+                }
+                shakeTimer = 0;
             }
         }
 
@@ -207,7 +215,9 @@ void GameManager::update() {
                 if (score % Kpipe == 0) {
                     scrollSpeed += INCREASE;
                     cout << "Scroll speed increased to: " << scrollSpeed << endl;
+                    shakeTimer = 15;
                 }
+
                 updateScoreTexture();
             }
             if (pipe->getTopRect(0, 0).x + PIPE_WIDTH < 0) {
@@ -216,10 +226,11 @@ void GameManager::update() {
                 maxPipeX = pipe->getTopRect(0, 0).x;
             }
         }
+
         groundX -= scrollSpeed;
         if (groundX < -SCREEN_WIDTH) groundX += SCREEN_WIDTH;
-    }
 
+    }
     if (shakeTimer > 0) {
         shakeOffsetX = (rand() % 10) - 5;
         shakeOffsetY = (rand() % 10) - 5;
@@ -236,7 +247,7 @@ void GameManager::render() {
     SDL_RenderCopy(renderer, background, NULL, &backgroundRect);
 
     for (auto& pipe : pipes) pipe->render(shakeOffsetX, shakeOffsetY);
-    bird->render();
+    bird->render(shakeOffsetX, shakeOffsetY);
     SDL_Rect groundRect = {static_cast<int>(groundX) + shakeOffsetX, SCREEN_HEIGHT - GROUND_HEIGHT + shakeOffsetY, SCREEN_WIDTH, GROUND_HEIGHT};
     SDL_Rect groundRect2 = {static_cast<int>(groundX + SCREEN_WIDTH) + shakeOffsetX, SCREEN_HEIGHT - GROUND_HEIGHT + shakeOffsetY, SCREEN_WIDTH, GROUND_HEIGHT};
     SDL_RenderCopy(renderer, ground, NULL, &groundRect);

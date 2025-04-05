@@ -31,8 +31,13 @@ void Bird::update() {
     angle = -velocity * 5;
 }
 
-void Bird::render() {
-    SDL_Rect rect = {x, y, BIRD_WIDTH, BIRD_HEIGHT};
+//void Bird::render() {
+//
+//    SDL_Rect rect = {x, y, BIRD_WIDTH, BIRD_HEIGHT};
+//    SDL_RenderCopyEx(renderer, texture, NULL, &rect, angle, NULL, SDL_FLIP_NONE);
+//}
+void Bird::render(int shakeOffsetX, int shakeOffsetY) {
+    SDL_Rect rect = {x + shakeOffsetX, y + shakeOffsetY, BIRD_WIDTH, BIRD_HEIGHT};
     SDL_RenderCopyEx(renderer, texture, NULL, &rect, angle, NULL, SDL_FLIP_NONE);
 }
 
