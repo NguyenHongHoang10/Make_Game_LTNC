@@ -15,15 +15,15 @@ const int PIPE_SPACING = 250;
 const int GAP_MIN = 135;
 const int GAP_MAX = 135;
 const int COLLISION_OFFSET = 0;
-const double GRAVITY = 0.4f;
-const double FLAP_FORCE = -7.0f;
+const float GRAVITY = 0.4f;
+const float FLAP_FORCE = -7.0f;
 const int MIN_GAP_CENTER = 120;
 const int MAX_GAP_CENTER = 350;
 const int GROUND_HEIGHT = 100;
 
 const float INITIAL_SPEED = 2;
 const int Kpipe = 1;
-const float INCREASE = 0.5;
+const float INCREASE = 0.2;
 
 /// Thông số hiển thị điểm số
 const string FONT_PATH = "Assets/font.ttf";
